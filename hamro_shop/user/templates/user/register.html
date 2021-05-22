@@ -1,0 +1,20 @@
+
+{% extends 'shop_base.html' %}
+
+{% block main %}
+
+<div class="row justify-content-center">
+    <div class="col-8">
+      <h2 class="mt-2">Sign Up</h2>
+      <hr class="mt-0 mb-4"> 
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Register">
+    </form>
+
+<a href="{% url 'login' %}">Back to login</a>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        
+        {% block css %}
+        <style href="{% static 'shop/style.css' %}"></style>
+        {% endblock  %}
+    <title>Hamro Pasal</title>
+    <!-- Khatli cdn -->
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+
+<body>
+
+    {% block navbar %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Hamro Pasal</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+                
+                <ul class="navbar-nav ml-auto">
+                    
+
+                    <div style="font-size: 18px;">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Hello, {{ user.username|default:'Guest' }}! <span class="sr-only">(current)</span>
+                                <i class="fa fa-user" aria-hidden="true" class="icon-warning-sign" style="color:white"></i>
+                            </a>
+                        </li>
+                    </div>
+
+                    
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <div style="font-size: 18px;">
+                            <a class="nav-link" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt " class="icon-warning-sign" style="color:red">Sign Out</i>
+                                
+                            </a>
+                        </div>
+                    </li>
+                    
+                    {% else %}
+
+                    <li class="nav-item">
+                        <div style="font-size: 18px;">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <i class="fa fa-sign-in-alt" class="icon-warning-sign" style="color:red"> Log In</i>
+                                
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <div style="font-size: 18px;">
+                            <a class="nav-link" href="{% url 'register' %}">
+                                <i class="fa fa-user-plus" class="icon-warning-sign" style="color:red">Sign up</i>
+                            </a>
+                        </div>
+                    </li>
+
+                    {% endif %}    
+                </ul>
+                    <a class="btn btn-success btn-sm ml-3" href="{% url 'card_display' %}" >
+                        <i class="fa fa-shopping-cart">3</i> 
+                        <span class="badge badge-light"></span>
+                    </a>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+ 
+   
+    <div class="container">
+        <div class="row mt-2">
+            {% block sidebar %}
+            {% endblock %}
+            {% block main  %}
+            {% endblock %}
+        </div>
+    </div>
+    
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+
+        
+</body>
+
+</html>
